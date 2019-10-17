@@ -1,13 +1,17 @@
 import datetime
 
 
-# associate the id of a person with his data
+# Associate the id of a person with his data
+
 def get_id_data():
-    return {"0": ["0", "Bill Gates", "Edad", "Company"],
-            "1": ["1", "Elon Musk", "Edad", "Company"],}
+    return {"0": ["0", "Diego Puche", "17", "InevaUp"],
+            "1": ["1", "Sergio Beltran", "17", "Company"],
+            '2': ["2", "Gabriel Daza", "17", "Company"],
+            "3": ["3", "Andres Rueda", "17", "Company"],
+            '4': ["4", "Valentina L", "17", "Company"]}
 
 
-# get the dictionary and return a text which is used for the history
+# Get the dictionary and return a text which is used for the history
 def dic_to_text(dic, is_av):
     text_dic = ''
     st = '\n'

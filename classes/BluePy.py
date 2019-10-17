@@ -10,6 +10,8 @@ class BluePy:
         self.port = None
 
     def start(self):
+
+        # Loading the data settings
         parent = os.path.abspath(os.path.join('classes', os.pardir))
         data_settings = pickle.loads(open(parent + "/data/settings.pickle", "rb").read())
 
@@ -24,11 +26,16 @@ class BluePy:
     def send_open_message(self):
         self.port.write(b'1')
 
-    def send_change_message(self):
+    def send_close_message(self):
+        self.port.write(b'0')
+
+    def send_turn_off_message(self):
         self.port.write(b'2')
 
     def close(self):
         self.port.close()
+
+    # these two methods are deprecated
 
     def reset_buffer(self):
         self.port.flushInput()

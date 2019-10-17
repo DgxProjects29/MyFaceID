@@ -9,8 +9,10 @@ class HistoryFrame:
 
         self.frame = Frame(self.main_frame, width=1050, height=560, bg="#f1f1f1")
 
+        # Loading the data history
         parent = os.path.abspath(os.path.join('frames', os.pardir))
         self.data = pickle.loads(open(parent+"/data/hist_data.pickle", "rb").read())
+
         self.header_frame_data()
 
         self.frame_container = Frame(self.frame, bg="#FAFAFA")
@@ -61,6 +63,7 @@ class HistoryFrame:
         canvas.bind('<Configure>', _configure_canvas)
 
     def create_list(self):
+        # Loading the data in labels
         for r, ob_list in enumerate(self.data):
             for c, ob_tup in enumerate(ob_list):
                 Label(self.frame_data, text=ob_tup, bg="#FAFAFA", fg="#333333", font=("Roboto Lt", 16)).grid(row=r,

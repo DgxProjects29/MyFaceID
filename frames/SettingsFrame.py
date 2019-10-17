@@ -24,6 +24,7 @@ class SettingsFrame:
         self.history_refresh = IntVar()
         self.average_num = DoubleVar()
         self.votes_num = IntVar()
+        self.unknown_num = IntVar()
 
         self.create_general_settings()
 
@@ -97,16 +98,22 @@ class SettingsFrame:
         Label(frame_general, text="Votes: ", bg="#FAFAFA", fg="#000000", font=("Roboto", 15)).place(x=20, y=200)
         votes_entry = Entry(frame_general, bg="#FAFAFA", width=6, font=("Roboto", 14), textvariable=self.votes_num)
 
+        Label(frame_general, text="Unknown: ", bg="#FAFAFA", fg="#000000", font=("Roboto", 15)).place(x=20, y=260)
+        unknown_entry = Entry(frame_general, bg="#FAFAFA", width=6, font=("Roboto", 14), textvariable=self.unknown_num)
+
         history_entry.delete(0, END)
         average_entry.delete(0, END)
         votes_entry.delete(0, END)
+        unknown_entry.delete(0, END)
         history_entry.insert(0, self.settings_data['refresh_history'])
         average_entry.insert(0, self.settings_data['average_num'])
         votes_entry.insert(0, self.settings_data['votes_num'])
+        unknown_entry.insert(0, self.settings_data['unknown_num'])
 
         history_entry.place(x=110, y=80)
         average_entry.place(x=110, y=140)
         votes_entry.place(x=110, y=200)
+        unknown_entry.place(x=120, y=260)
 
         frame_general.place(x=700, y=30)
 
@@ -124,7 +131,8 @@ class SettingsFrame:
                             'refresh_blue': self.refresh_blue.get(),
                             'refresh_history': self.history_refresh.get(),
                             'average_num': self.average_num.get(),
-                            'votes_num': self.votes_num.get()}
+                            'votes_num': self.votes_num.get(),
+                            'unknown_num': self.unknown_num.get()}
 
             print(new_settings)
             f = open("data/settings.pickle", "wb")

@@ -6,8 +6,10 @@ import cv2
 class CameraView:
 
     def __init__(self):
+        # You could use a video file instead of a camera device
         self.cam = cv2.VideoCapture(0)
 
+        # width is equal to 640 and height is 480
         self.height = self.cam.get(cv2.CAP_PROP_FRAME_HEIGHT)
         self.width = self.cam.get(cv2.CAP_PROP_FRAME_WIDTH)
 
