@@ -6,9 +6,11 @@ import pickle
 knownEncodings = []
 knownIds = []
 
+# Here you put the folder where you dataset is located
 for root, dirs, files in os.walk('dataset'):
     for file in files:
 
+        # Get the id of the person according to the name of the folder where his photos are located
         _id = os.path.basename(root)
         imagePath = os.path.join(root, file)
 
@@ -18,6 +20,7 @@ for root, dirs, files in os.walk('dataset'):
         rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
         boxes = face_recognition.face_locations(rgb, model="hog")
+        # Create a 128D vector with the face features of the person
         encodings = face_recognition.face_encodings(rgb, boxes)
 
         for encoding in encodings:
